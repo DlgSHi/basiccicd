@@ -42,7 +42,10 @@ jobs:
 
       - name: Build and push to ACR
         uses: docker/build-push-action@v6
+        env: 
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: ${{ vars.ACR_NAME }}.azurecr.io/${{ vars.IMAGE_NAME }}:${{ env.SHA }}-${{ env.DATE }}
