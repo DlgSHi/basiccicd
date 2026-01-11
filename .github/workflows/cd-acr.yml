@@ -42,6 +42,8 @@ jobs:
 
       - name: Build and push to ACR
         uses: docker/build-push-action@v6
+        env: 
+          WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
         with:
           context: .
           push: true
